@@ -1,0 +1,107 @@
+@each $font-face in 'comic'{
+	@font-face{
+		font-family: $font-face;
+		font-style: normal;
+		font-weight: normal;
+		src:url('../fonts/#{$font-face}.ttf ');
+	}
+}
+@mixin efectoEncabezado($grados,$color: 'red'){
+	content:"";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	background: unquote($color);
+	-webkit-transform: skew(0deg,unquote($grados + 'deg'));
+	-moz-transform: skew(0deg,unquote($grados + 'deg'));
+	-ms-transform: skew(0deg,unquote($grados + 'deg'));
+	transform: skew(0deg,unquote($grados + 'deg'));
+}
+html, body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+} 
+.callig{
+	font-family: 'Calligraffitti', cursive;
+}
+.fullscreen{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+header{
+	position: fixed;
+	width: 100%;
+	top: -9em;
+	text-align: center; 
+	transition:all 0.4s;
+	&:hover{
+		top: -6em;
+
+	}
+
+	&:before{
+			left: 0;
+			@include efectoEncabezado(5,#848484);
+	}
+
+	&:after{
+			@include efectoEncabezado(-5,#848484);
+			right: 0;
+	}
+	nav ul{
+		margin: 0;
+		color: #01DF3A;
+		font-weight: bold;
+		margin-bottom: 2em;
+
+
+		li{
+			display:inline-block;
+			padding: 0 10px;  
+
+
+		}
+	}
+	#logo{
+		background-color: #848484;
+		position: relative;
+		width: 15%;
+		text-align: center;
+		min-width: 100px;
+		max-width: 100%;
+		left: 43%;
+		height: 100px;
+		top: 160px;
+		z-index: 5;
+		border-radius: 5em 0em;
+		img{
+			margin-top: -20px;
+			width: 100px;
+		}
+
+	}
+
+
+}	
+.slider_container{
+	position: fixed;
+	overflow: hidden;
+	left: 0;
+	z-index: -2;
+	background-color: #000;
+	.slideContainer{
+		white-space: nowrap;
+		height: 100%;
+		.slide{
+			display: inline-block;
+			background-color: #fff;
+			margin-right: -4px;
+		}
+	}
+}
